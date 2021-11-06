@@ -5,7 +5,7 @@ import { multiplication } from '../math-utils.js';
 
 const test = QUnit.test;
 
-test('time to test a function', (expect) => {
+test('addition() should take in numbers 1, 2 and return 3', (expect) => {
     //Arrange
     // Set up your arguments and expectations
     const expected = 3;
@@ -21,48 +21,26 @@ test('time to test a function', (expect) => {
 });
 
 
-test('time to test a function', (expect) => {
-    //Arrange
-    // Set up your arguments and expectations
+test('subtraction() should take in numbers 10, 2 and return 8', (expect) => {
     const expected = 8;
-    
-    //Act 
-    // Call the function you're testing and set the result to a const
     const actual = subtraction(10, 2);
-    // const actual = subtraction(8, 2);
 
-    //Expect
-    // Make assertions about what is expected versus the actual result
     expect.equal(actual, expected);
 });
 
-test('time to test a function', (expect) => {
-    //Arrange
-    // Set up your arguments and expectations
+test('multiplication() should take in numbers 2, 5 and return 10', (expect) => {
     const expected = 10;
-    
-    //Act 
-    // Call the function you're testing and set the result to a const
     const actual = multiplication(2, 5);
     // const actual = multiplication(3, 6);
 
-    //Expect
-    // Make assertions about what is expected versus the actual result
     expect.equal(actual, expected);
 });
 
-test('time to test a function', (expect) => {
-    //Arrange
-    // Set up your arguments and expectations
+test('division() should take in numbers 8, 4 and return 2', (expect) => {
     const expected = 2;
-    
-    //Act 
-    // Call the function you're testing and set the result to a const
     const actual = division(8, 4);
     // const actual = division(10, 2);
 
-    //Expect
-    // Make assertions about what is expected versus the actual result
     expect.equal(actual, expected);
 });
 

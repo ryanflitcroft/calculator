@@ -5,50 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <link rel="stylesheet" href="./styles/style.css">
     <title>Calculator</title>
 </head>
 
 <body>
     <header>
-
+        
     </header>
-    <main>
+    <main class="center-flex">
         <!--  +  -->
         <section class="math-operator addition-operator">
             <input type="number"
-                   id="add-x">
+                   id="add-x"
+                   required>
             <span class="operator">+</span>
             <input type="number"
-                   id="add-y">
+                   id="add-y"
+                   required>
             <span class="operator">=</span>
             <input type="submit"
                    id="add-submit">
             <span class="operator"
-                  id="sum"></span>
+                   id="sum">
+            </span>
         </section>
 
         <!--  -  -->
         <section class="math-operator subtraction-operator">
             <input type="number"
-                   id="sub-x">
+                   id="sub-x"
+                   required>
             <span class="operator">-</span>
             <input type="number"
-                   id="sub-y">
+                   id="sub-y"
+                   required>
             <span class="operator">=</span>
             <input type="submit"
                    id="sub-submit">
             <span class="operator"
-                  id="difference"></span>
+                   id="difference"></span>
         </section>
 
         <!--  *  -->
         <section class="math-operator multiplication-operator">
             <input type="number"
-                   id="mult-x">
+                   id="mult-x"
+                   required>
             <span class="operator">*</span>
             <input type="number"
-                   id="mult-y">
+                   id="mult-y"
+                   required>
             <span class="operator">=</span>
             <input type="submit"
                    id="mult-submit">
@@ -59,10 +66,12 @@
         <!--  /  -->
         <section class="math-operator division-operator">
             <input type="number"
-                   id="div-x">
+                   id="div-x"
+                   required>
             <span class="operator">/</span>
             <input type="number"
-                   id="div-y">
+                   id="div-y"
+                   required>
             <span class="operator">=</span>
             <input type="submit"
                    id="div-submit">

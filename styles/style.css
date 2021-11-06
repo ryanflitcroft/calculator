@@ -10,7 +10,7 @@ html, body {
 }
 
 main {
-
+height: 100%
 }
 
 header {
@@ -19,4 +19,17 @@ header {
 
 footer {
 
+}
+
+.center-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.math-operator {
+    padding: 1rem;
 }
