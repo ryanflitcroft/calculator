@@ -76,3 +76,7 @@ a {
     background-color: rgba(250, 250, 0, 0.5);
     box-shadow: rgba(250, 250, 0, 0.75) 0.1em 0.1em 0.1em;
 }
+
+.equality:last-child {
+    margin: 0 0 2rem 0;
+}
