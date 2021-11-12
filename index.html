@@ -2,110 +2,48 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="https://use.typekit.net/bgs5xty.css">
-    <title>Calculator</title>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <meta http-equiv="X-UA-Compatible" content="ie=edge">
+       <link rel="stylesheet" href="./styles/style.css">
+       <link rel="stylesheet" href="https://use.typekit.net/bgs5xty.css">
+       <title>Calculator</title>
 </head>
 
 <body>
-    <header class="center">
-        <h1>Do some math</h1>
-        <p>[ <em>because math is awesome</em> ]</p>
-    </header>
-    <main class="center">
-        <!--  +  -->
-        <section class="math-operator addition-operator">
-            <h2>Addition</h2>
-            <input type="number"
-                   id="add-x"
-                   required>
-            <br>
-            <span class="operator">+</span>
-            <br>
-            <input type="number"
-                   id="add-y"
-                   required>
-            <br>
-            <input type="submit"
-                   id="add-submit"
-                   value="=">
-            <br>
-            <span class="equality operator"
-                   id="sum">
-            </span>
-        </section>
+       <header class="center">
+              <h1>Do some math</h1>
+              <p>[ <em>because math is awesome</em> ]</p>
+       </header>
+       <main class="center">
+              <section class="key-container">
+                     <span class="display-box" id="display"></span>
+                     <button class="number-key" id="one">1</button>
+                     <button class="number-key" id="two">2</button>
+                     <button class="number-key" id="three">3</button>
+                     <button class="operator-key" id="divide" data-action="divide">/</button>
+                     <button class="number-key" id="four">4</button>
+                     <button class="number-key" id="five">5</button>
+                     <button class="number-key" id="six">6</button>
+                     <button class="operator-key" id="multiply" data-action="multiply">*</button>
+                     <button class="number-key" id="seven">7</button>
+                     <button class="number-key" id="eight">8</button>
+                     <button class="number-key" id="nine">9</button>
+                     <button class="operator-key" id="subtract" data-action="subtract">-</button>
+                     <button class="number-key" id="zero">0</button>
+                     <button class="number-key" id="decimal" data-action="decimal">.</button>
+                     <button class="operator-key" id="pos-neg" data-action="pos-neg">+/-</button>
+                     <button class="operator-key" id="add" data-action="add">+</button>
+                     <button class="operator-key" id="clear" data-action="clear">clear</button>
+                     <button class="operator-key" id="equals" data-action="equals">=</button>
 
-        <!--  -  -->
-        <section class="math-operator subtraction-operator">
-            <h2>Subtraction</h2>
-            <input type="number"
-                   id="sub-x"
-                   required>
-            <br>
-            <span class="operator">-</span>
-            <br>
-            <input type="number"
-                   id="sub-y"
-                   required>
-            <br>
-            <input type="submit"
-                   id="sub-submit"
-                   value="=">
-            <br>
-            <span class="equality operator"
-                   id="difference"></span>
-        </section>
+              </section>
+       </main>
+       <footer>
+              <a href="https://github.com/ryanflitcroft" target="_blank">{ github.com/ryanflitcroft }</a>
+       </footer>
 
-        <!--  *  -->
-        <section class="math-operator multiplication-operator">
-            <h2>Multiplication</h2>
-            <input type="number"
-                   id="mult-x"
-                   required>
-            <br>
-            <span class="operator">*</span>
-            <br>
-            <input type="number"
-                   id="mult-y"
-                   required>
-            <br>
-            <input type="submit"
-                   id="mult-submit"
-                   value="=">
-            <br>
-            <span class="equality operator"
-                  id="product"></span>
-        </section>
-
-        <!--  /  -->
-        <section class="math-operator division-operator">
-            <h2>Division</h2>
-            <input type="number"
-                   id="div-x"
-                   required>
-            <br>
-            <span class="operator">/</span>
-            <br>
-            <input type="number"
-                   id="div-y"
-                   required>
-            <br>
-            <input type="submit"
-                   id="div-submit"
-                   value="=">
-            <br>
-            <span class="equality operator"
-                  id="quotient"></span>
-        </section>
-    </main>
-    <footer>
-        <a href="https://github.com/ryanflitcroft" target="_blank">{ github.com/ryanflitcroft }</a>
-    </footer>
-
-    <script type="module" src="./app.js"></script>
+       <script type="module" src="./app.js"></script>
 </body>
 
 </html>
