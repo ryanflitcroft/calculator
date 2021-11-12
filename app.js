@@ -85,11 +85,11 @@ function decimalClick(decimalBtn) {
 }
 
 
-// clearButton will clear display .textContent
+// clearButton will assign 0 to display .textContent
 // clearButton will assign empty to arrayOperator arrayX arrayY
 function clearButton(clearBtn) {
     clearBtn.addEventListener('click', () => {
-        display.textContent = '';
+        display.textContent = 0;
         arrayOperator = [];
         arrayX = [];
         arrayY = [];
@@ -161,7 +161,7 @@ function divideClick(operator) {
 }
 
 function equalsClick() {
-
+    // how to use values x from arrayX, y from arrayY, op from arrayOperator on equals click ??
 }
 
 numberClick(num1);
@@ -187,7 +187,4 @@ equalsClick(equals);
 // PROBLEMS TO SOLVE
 //  - equals posNeg subsequent_operators pemdas ??
 //    - eval ?
-//  - store number clicks to x, y variables?
-//    - concat numbers clicked before operator
-//    - operator click stores number concat number to x
-//    - only after operator click, number clicks concat and store to y
+// how to use values x from arrayX, y from arrayY, op from arrayOperator on equals click ??
