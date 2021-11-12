@@ -117,7 +117,7 @@ button {
 }
 
 .number-key:active {
-    background: rgb(238, 155, 0);
+    background: rgb(233, 155, 11);
 }
 
 .operator-key {
@@ -126,6 +126,10 @@ button {
 
 .operator-key:hover {
     background: orchid;
+}
+
+.operator-key:active {
+    background: rgb(206, 101, 202);
 }
 
 .operator-key#equals {
@@ -141,4 +145,9 @@ button {
 .operator-key#equals:hover,
 .operator-key#add:hover {
     background: hotpink;
+}
+
+.operator-key#equals:active,
+.operator-key#add:active {
+    background: rgb(231, 88, 160);
 }
