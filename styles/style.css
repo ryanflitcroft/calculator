@@ -5,48 +5,45 @@
 html, body {
     margin: 0;
     padding: 0;
-    width: 100%;
+    max-width: 100%;
     height: 100%;
+    overflow-x: hidden;
     font-family: brevier, sans-serif;
     font-size: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 header {
     position: sticky;
     top: 0;
     background-color: rgba(250, 250, 0, 0.5);
+    box-shadow: midnightblue 0.25em 0.25em 0.5em;
 }
 
 h1, h2 {
     margin: 0;
 }
-
-h2 {
-    font-size: 0.75em;
-}
-
-header p {
-    margin-top: 0;
-}
-
 main {
+    display: flex;
     height: 100%;
-}
-
-input {
-    font-family: brevier, sans-serif;
-    font-size: 1.5rem;
-}
-
-[type~="submit"] {
-    margin: 1rem;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 footer {
-    position: fixed;
+    display: flex;
+    position: sticky;
     bottom: 0;
-    width: 100%;
+    height: 1.5em;
     background-color: rgba(250, 250, 0, 0.5);
+    box-shadow: mediumseagreen -0.1em -0.1em 0.5em;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
     text-align: center;
 }
 
@@ -57,26 +54,72 @@ a {
     color: black;
 }
 
-.math-operator {
-    padding: 1rem;
-}
-
-.center {
+section.key-container {
+    display: grid;
+    background: aliceblue;
+    box-shadow: midnightblue 0.25em 0.25em 0.5em, 
+                mediumseagreen -0.1em -0.1em 0.5em;
+    border: solid 2px rebeccapurple;
+    border-radius: 0.25em;
+    padding: 1em;
+    width: 350px;
+    height: 465px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0.25em;
     justify-content: center;
-    align-content: center;
     align-items: center;
     text-align: center;
 }
 
-.equality {
-    display: inline-block;
-    width: auto;
-    padding: 0 1em;
-    font-size: 2rem;
-    background-color: rgba(250, 250, 0, 0.5);
-    box-shadow: rgba(250, 250, 0, 0.75) 0.1em 0.1em 0.1em;
+.number-key, 
+.operator-key,
+.display-box {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: dodgerblue;
+    border: solid 1px slateblue;
+    box-shadow: midnightblue 2px 2px 2px, 
+                mediumseagreen  -1px -1px 2px;
+    border-radius: 0.5em;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-.equality:last-child {
-    margin: 0 0 2rem 0;
+#display {
+    background: mediumvioletred;
+    grid-column: span 4;
+}
+
+#display:hover {
+    background: skyblue;
+} 
+
+.number-key:hover {
+    background: orange;
+}
+
+.operator-key {
+    background: lavender;
+}
+
+.operator-key:hover {
+    background: orchid;
+}
+
+.operator-key#equals {
+    background: aqua;
+    grid-column: span 2;
+}
+
+.operator-key#add {
+    background: aqua;
+    grid-row: span 2;
+}
+
+.operator-key#equals:hover,
+.operator-key#add:hover {
+    background: hotpink;
 }
