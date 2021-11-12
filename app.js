@@ -44,23 +44,26 @@ const display = document.getElementById('display');
 let arrayX = [];
 let arrayY = []; 
 let arrayOperator = [];
-
+let x;
+let y;
+let reset;
 
 // numberClick will display .textContent to max 17 numbers
 // numberClick and no arrayOperator will push click value to arrayX and assign number value to variable x
 // numberClick and  arrayOperator will push click value to arrayY and assign number value to variable x
 function numberClick(btn) {
     btn.addEventListener('click', () => {
+        resetDisplay();
         if (display.textContent.length < 17 && arrayOperator.length === 0) {
             arrayX.push(+btn.textContent);
-            let x = arrayX.join('');
+            x = +arrayX.join('');
             display.textContent += btn.textContent;
             console.log(arrayX);
             console.log(x);
-
+            
         } else if (display.textContent.length < 17 && arrayOperator.length !== 0) {
             arrayY.push(+btn.textContent);
-            let y = arrayY.join('');
+            y = +arrayY.join('');
             display.textContent += btn.textContent;
             console.log(arrayY);
             console.log(y);
@@ -73,6 +76,7 @@ function numberClick(btn) {
 // if decimalClick and operatorArray, decimal push to arrayY
 function decimalClick(decimalBtn) {
     decimalBtn.addEventListener('click', () => {
+        resetDisplay();
         if (display.textContent.includes(decimalBtn.textContent) === false && arrayOperator.length === 0) {
             arrayX.push(decimalBtn.textContent);
             display.textContent += '.';
@@ -104,9 +108,9 @@ function addClick(operator) {
 
             if (arrayOperator.length === 0 && display.textContent.length !== 1) {
                 arrayOperator.push(operator.textContent);
-                let opAdd = arrayOperator.join(''); 
+                // arrayOperator.join(''); 
                 display.textContent = '+ ';
-                console.log(opAdd);
+                console.log(arrayOperator);
             } 
         });
     } 
@@ -120,9 +124,9 @@ function subtractClick(operator) {
 
             if (arrayOperator.length === 0 && display.textContent.length !== 1) {
                 arrayOperator.push(operator.textContent);
-                let opSub = arrayOperator.join('');
+                // arrayOperator.join('');
                 display.textContent = '- ';
-                console.log(opSub);
+                console.log(arrayOperator);
             }
         });
     }
@@ -136,9 +140,9 @@ function multiplyClick(operator) {
 
             if (arrayOperator.length === 0 && display.textContent.length !== 1) {
                 arrayOperator.push(operator.textContent);
-                let opMult = arrayOperator.join('');
+                // arrayOperator.join('');
                 display.textContent = '* ';
-                console.log(opMult);
+                console.log(arrayOperator);
             }
         });
     }
@@ -152,9 +156,9 @@ function divideClick(operator) {
 
             if (arrayOperator.length === 0 && display.textContent.length !== 1) {
                 arrayOperator.push(operator.textContent);
-                let opDiv = arrayOperator.join('');
+                // arrayOperator.join('');
                 display.textContent = '/ ';
-                console.log(opDiv);
+                console.log(arrayOperator);
             }
         });
     }
@@ -162,7 +166,32 @@ function divideClick(operator) {
 
 function equalsClick() {
     // how to use values x from arrayX, y from arrayY, op from arrayOperator on equals click ??
+    equals.addEventListener('click', () => {
+        if (arrayOperator !== false) {
+            let answer = addition(x, y);   
+            display.textContent = answer;
+
+            reset = true;
+            console.log(reset);
+        }
+    });
 }
+
+// resetDisplay following numberClick/decimalClick if equalsClick
+function resetDisplay() {
+    if (reset === true) {
+        display.textContent = 0;
+        arrayX = [];
+        x = 0;
+        arrayOperator = [];
+        arrayY = [];
+        y = 0;
+        reset = false;
+    }
+}
+
+        // let answer = addition(x, y);   
+        // display.textContent = answer;
 
 numberClick(num1);
 numberClick(num2);
