@@ -99,12 +99,25 @@ button {
     grid-column: span 4;
 }
 
-#display:hover {
-    background: skyblue;
+@keyframes bghover {
+    0% { background: mediumvioletred;}
+    100% { background: skyblue; }
+}
+
+.key-container:hover #display {
+    animation-name: bghover;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
 } 
 
 .number-key:hover {
     background: orange;
+}
+
+.number-key:active {
+    background: rgb(238, 155, 0);
 }
 
 .operator-key {

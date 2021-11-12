@@ -93,7 +93,7 @@ function decimalClick(decimalBtn) {
 // clearButton will assign empty to arrayOperator arrayX arrayY
 function clearButton(clearBtn) {
     clearBtn.addEventListener('click', () => {
-        display.textContent = 0;
+        display.textContent = '';
         arrayOperator = [];
         arrayX = [];
         arrayY = [];
@@ -106,7 +106,7 @@ function addClick(operator) {
     if (operator === add) {
         operator.addEventListener('click', () => {
 
-            if (arrayOperator.length === 0 && display.textContent.length !== 1) {
+            if (arrayOperator.length === 0 && display.textContent.length !== 0) {
                 arrayOperator.push(operator.textContent);
                 // arrayOperator.join(''); 
                 display.textContent = '+ ';
@@ -122,7 +122,7 @@ function subtractClick(operator) {
     if (operator === subtract) {
         operator.addEventListener('click', () => {
 
-            if (arrayOperator.length === 0 && display.textContent.length !== 1) {
+            if (arrayOperator.length === 0 && display.textContent.length !== 0) {
                 arrayOperator.push(operator.textContent);
                 // arrayOperator.join('');
                 display.textContent = '- ';
@@ -138,7 +138,7 @@ function multiplyClick(operator) {
     if (operator === multiply) {
         operator.addEventListener('click', () => {
 
-            if (arrayOperator.length === 0 && display.textContent.length !== 1) {
+            if (arrayOperator.length === 0 && display.textContent.length !== 0) {
                 arrayOperator.push(operator.textContent);
                 // arrayOperator.join('');
                 display.textContent = '* ';
@@ -154,7 +154,7 @@ function divideClick(operator) {
     if (operator === divide) {
         operator.addEventListener('click', () => {
 
-            if (arrayOperator.length === 0 && display.textContent.length !== 1) {
+            if (arrayOperator.length === 0 && display.textContent.length !== 0) {
                 arrayOperator.push(operator.textContent);
                 // arrayOperator.join('');
                 display.textContent = '/ ';
@@ -195,7 +195,7 @@ function equalsClick() {
 // resetDisplay following numberClick/decimalClick if equalsClick
 function resetDisplay() {
     if (reset === true) {
-        display.textContent = 0;
+        display.textContent = '';
         arrayX = [];
         x = 0;
         arrayOperator = [];
