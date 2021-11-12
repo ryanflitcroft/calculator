@@ -41,69 +41,128 @@ const display = document.getElementById('display');
 
 
 
-let x = 0;
-let y = 0;
+let arrayX = [];
+let arrayY = []; 
+let arrayOperator = [];
+
 
 // numberClick will display .textContent to max 17 numbers
+// numberClick and no arrayOperator will push click value to arrayX and assign number value to variable x
+// numberClick and  arrayOperator will push click value to arrayY and assign number value to variable x
 function numberClick(btn) {
     btn.addEventListener('click', () => {
-        if (display.textContent.length < 17) {
+        if (display.textContent.length < 17 && arrayOperator.length === 0) {
+            arrayX.push(+btn.textContent);
+            let x = arrayX.join('');
             display.textContent += btn.textContent;
+            console.log(arrayX);
+            console.log(x);
+
+        } else if (display.textContent.length < 17 && arrayOperator.length !== 0) {
+            arrayY.push(+btn.textContent);
+            let y = arrayY.join('');
+            display.textContent += btn.textContent;
+            console.log(arrayY);
+            console.log(y);
         }
     });
 }
 
 // decimalClick will display.textContent if decimal is not already present
+// if decimalClick and no operatorArray, decimal push to arrayX
+// if decimalClick and operatorArray, decimal push to arrayY
 function decimalClick(decimalBtn) {
     decimalBtn.addEventListener('click', () => {
-        if (display.textContent.includes(decimalBtn.textContent) === false) {
+        if (display.textContent.includes(decimalBtn.textContent) === false && arrayOperator.length === 0) {
+            arrayX.push(decimalBtn.textContent);
+            display.textContent += '.';
+
+        } else if (display.textContent.includes(decimalBtn.textContent) === false && arrayOperator.length !== 0) {
+            arrayY.push(decimalBtn.textContent);
             display.textContent += '.';
         }
     });
 }
 
-//clearButton will clear display .textContent
+
+// clearButton will clear display .textContent
+// clearButton will assign empty to arrayOperator arrayX arrayY
 function clearButton(clearBtn) {
     clearBtn.addEventListener('click', () => {
         display.textContent = '';
+        arrayOperator = [];
+        arrayX = [];
+        arrayY = [];
     });
 }
 
+// if operator is add and if no arrayOperator and display textContent is greater than initial, + pushed to arrayOperator and opAdd assigned to +
+// display textContent changed to +
 function addClick(operator) {
     if (operator === add) {
         operator.addEventListener('click', () => {
-            display.textContent = '+ ';
+
+            if (arrayOperator.length === 0 && display.textContent.length !== 1) {
+                arrayOperator.push(operator.textContent);
+                let opAdd = arrayOperator.join(''); 
+                display.textContent = '+ ';
+                console.log(opAdd);
+            } 
         });
     } 
 }
 
+// if operator is subtract and if no arrayOperator and display textContent is greater than initial, - pushed to arrayOperator and opSub assigned to -
+// display textContent changed to -
 function subtractClick(operator) {
     if (operator === subtract) {
         operator.addEventListener('click', () => {
-            display.textContent = '- ';
+
+            if (arrayOperator.length === 0 && display.textContent.length !== 1) {
+                arrayOperator.push(operator.textContent);
+                let opSub = arrayOperator.join('');
+                display.textContent = '- ';
+                console.log(opSub);
+            }
         });
     }
 }
 
+// if operator is multiply and if no arrayOperator and display textContent is greater than initial, * pushed to arrayOperator and opMult assigned to *
+// display textContent changed to *
 function multiplyClick(operator) {
     if (operator === multiply) {
         operator.addEventListener('click', () => {
-            display.textContent = '* ';
+
+            if (arrayOperator.length === 0 && display.textContent.length !== 1) {
+                arrayOperator.push(operator.textContent);
+                let opMult = arrayOperator.join('');
+                display.textContent = '* ';
+                console.log(opMult);
+            }
         });
     }
 }
 
+// if operator is divide and if no arrayOperator and display textContent is greater than initial, / pushed to arrayOperator and opDiv assigned to /
+// display textContent changed to /
 function divideClick(operator) {
     if (operator === divide) {
         operator.addEventListener('click', () => {
-            display.textContent = '/ ';
+
+            if (arrayOperator.length === 0 && display.textContent.length !== 1) {
+                arrayOperator.push(operator.textContent);
+                let opDiv = arrayOperator.join('');
+                display.textContent = '/ ';
+                console.log(opDiv);
+            }
         });
     }
 }
 
-console.log(x);
-console.log(y);
+function equalsClick() {
 
+}
 
 numberClick(num1);
 numberClick(num2);
@@ -118,15 +177,15 @@ numberClick(num0);
 decimalClick(decimal);
 clearButton(clear);
 
-
 addClick(add);
 subtractClick(subtract);
 multiplyClick(multiply);
 divideClick(divide);
+equalsClick(equals);
 
 
 // PROBLEMS TO SOLVE
-//  - equals posNeg max_input subsequent_operators pemdas ??
+//  - equals posNeg subsequent_operators pemdas ??
 //    - eval ?
 //  - store number clicks to x, y variables?
 //    - concat numbers clicked before operator
