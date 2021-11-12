@@ -39,7 +39,13 @@ const display = document.getElementById('display');
 //  - num click will display key value in display-span textContent
 //  - additional num clicks will concat values
 
-function buttonClick(btn) {
+
+
+let x = 0;
+let y = 0;
+
+// numberClick will display .textContent to max 17 numbers
+function numberClick(btn) {
     btn.addEventListener('click', () => {
         if (display.textContent.length < 17) {
             display.textContent += btn.textContent;
@@ -47,32 +53,82 @@ function buttonClick(btn) {
     });
 }
 
+// decimalClick will display.textContent if decimal is not already present
+function decimalClick(decimalBtn) {
+    decimalBtn.addEventListener('click', () => {
+        if (display.textContent.includes(decimalBtn.textContent) === false) {
+            display.textContent += '.';
+        }
+    });
+}
+
+//clearButton will clear display .textContent
 function clearButton(clearBtn) {
     clearBtn.addEventListener('click', () => {
         display.textContent = '';
     });
 }
 
+function addClick(operator) {
+    if (operator === add) {
+        operator.addEventListener('click', () => {
+            display.textContent = '+ ';
+        });
+    } 
+}
 
-buttonClick(num1);
-buttonClick(num2);
-buttonClick(num3);
-buttonClick(num4);
-buttonClick(num5);
-buttonClick(num6);
-buttonClick(num7);
-buttonClick(num8);
-buttonClick(num9);
-buttonClick(num0);
-buttonClick(decimal);
-buttonClick(add);
-buttonClick(subtract);
-buttonClick(multiply);
-buttonClick(divide);
+function subtractClick(operator) {
+    if (operator === subtract) {
+        operator.addEventListener('click', () => {
+            display.textContent = '- ';
+        });
+    }
+}
+
+function multiplyClick(operator) {
+    if (operator === multiply) {
+        operator.addEventListener('click', () => {
+            display.textContent = '* ';
+        });
+    }
+}
+
+function divideClick(operator) {
+    if (operator === divide) {
+        operator.addEventListener('click', () => {
+            display.textContent = '/ ';
+        });
+    }
+}
+
+console.log(x);
+console.log(y);
+
+
+numberClick(num1);
+numberClick(num2);
+numberClick(num3);
+numberClick(num4);
+numberClick(num5);
+numberClick(num6);
+numberClick(num7);
+numberClick(num8);
+numberClick(num9);
+numberClick(num0);
+decimalClick(decimal);
 clearButton(clear);
+
+
+addClick(add);
+subtractClick(subtract);
+multiplyClick(multiply);
+divideClick(divide);
+
 
 // PROBLEMS TO SOLVE
 //  - equals posNeg max_input subsequent_operators pemdas ??
 //    - eval ?
-//    - when operator is clicked, store display.text content value to new math variable
-//      - when equal operator is clicked, concat to new math variable and perform equation stored in math variable, return value
+//  - store number clicks to x, y variables?
+//    - concat numbers clicked before operator
+//    - operator click stores number concat number to x
+//    - only after operator click, number clicks concat and store to y
