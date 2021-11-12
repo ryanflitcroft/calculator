@@ -167,13 +167,28 @@ function divideClick(operator) {
 function equalsClick() {
     // how to use values x from arrayX, y from arrayY, op from arrayOperator on equals click ??
     equals.addEventListener('click', () => {
-        if (arrayOperator !== false) {
+        if (arrayOperator !== false && arrayOperator.includes('+')) {
             let answer = addition(x, y);   
             display.textContent = answer;
-
+            reset = true;
+            console.log(reset);
+        } else if (arrayOperator !== false && arrayOperator.includes('-')) {
+            let answer = subtraction(x, y);   
+            display.textContent = answer;
+            reset = true;
+            console.log(reset);
+        } else if (arrayOperator !== false && arrayOperator.includes('*')) {
+            let answer = multiplication(x, y);   
+            display.textContent = answer;
+            reset = true;
+            console.log(reset);
+        } else if (arrayOperator !== false && arrayOperator.includes('/')) {
+            let answer = division(x, y);   
+            display.textContent = answer;
             reset = true;
             console.log(reset);
         }
+    
     });
 }
 
