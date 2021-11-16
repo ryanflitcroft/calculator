@@ -33,8 +33,8 @@ section.key-container {
     border: solid 2px rebeccapurple;
     border-radius: 0.25em;
     padding: 1em;
-    width: 350px;
-    height: 465px;
+    width: 315px;
+    height: 418.5px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     gap: 0.25em;
@@ -120,4 +120,25 @@ button {
 .operator-key#equals:active,
 .operator-key#add:active {
     background: rgb(231, 88, 160);
+}
+
+@media only screen and (min-width: 375px) {
+    section.key-container {
+        width: 350px;
+        height: 465px;
+    }
+}
+
+@media only screen and (max-width: 335px) {
+    section.key-container {
+        width: 283.5px;
+        height: 376.5px;
+    }
+}
+
+@media only screen and (max-width: 290px) {
+    section.key-container {
+        width: 255px;
+        height: 339px;
+    }
 }
