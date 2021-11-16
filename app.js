@@ -29,11 +29,11 @@ const subtract = document.getElementById('subtract');
 const multiply = document.getElementById('multiply');
 const divide = document.getElementById('divide');
 const equals = document.getElementById('equals');
-const posNeg = document.getElementById('pos-neg');
+const negPos = document.getElementById('neg-pos');
 const clear = document.getElementById('clear');
 const display = document.getElementById('display');
 
-// console.log(num1, num2, num3, num4, num5, num6, num7, num8, num9, num0, decimal, add, subtract, multiply, divide, equals, posNeg, clear, display); 
+// console.log(num1, num2, num3, num4, num5, num6, num7, num8, num9, num0, decimal, add, subtract, multiply, divide, equals, negPos, clear, display); 
 
 // + eventListener click for number-key variables
 //  - num click will display key value in display-span textContent
@@ -44,6 +44,7 @@ const display = document.getElementById('display');
 let arrayX = [];
 let arrayY = []; 
 let arrayOperator = [];
+let operatorDisplay;
 let x;
 let y;
 let reset;
@@ -88,18 +89,6 @@ function decimalClick(decimalBtn) {
     });
 }
 
-
-// clearButton will assign 0 to display .textContent
-// clearButton will assign empty to arrayOperator arrayX arrayY
-function clearButton(clearBtn) {
-    clearBtn.addEventListener('click', () => {
-        display.textContent = '';
-        arrayOperator = [];
-        arrayX = [];
-        arrayY = [];
-    });
-}
-
 // if operator is add and if no arrayOperator and display textContent is greater than initial, + pushed to arrayOperator and opAdd assigned to +
 // display textContent changed to +
 function addClick(operator) {
@@ -108,8 +97,8 @@ function addClick(operator) {
 
             if (arrayOperator.length === 0 && display.textContent.length !== 0) {
                 arrayOperator.push(operator.textContent);
-                // arrayOperator.join(''); 
-                display.textContent = '+ ';
+                operatorDisplay = '+ ';
+                display.textContent = operatorDisplay;
                 console.log(arrayOperator);
             } 
         });
@@ -124,8 +113,8 @@ function subtractClick(operator) {
 
             if (arrayOperator.length === 0 && display.textContent.length !== 0) {
                 arrayOperator.push(operator.textContent);
-                // arrayOperator.join('');
-                display.textContent = '- ';
+                operatorDisplay = '- ';
+                display.textContent = operatorDisplay;
                 console.log(arrayOperator);
             }
         });
@@ -140,8 +129,8 @@ function multiplyClick(operator) {
 
             if (arrayOperator.length === 0 && display.textContent.length !== 0) {
                 arrayOperator.push(operator.textContent);
-                // arrayOperator.join('');
-                display.textContent = '* ';
+                operatorDisplay = '* ';
+                display.textContent = operatorDisplay;
                 console.log(arrayOperator);
             }
         });
@@ -157,7 +146,8 @@ function divideClick(operator) {
             if (arrayOperator.length === 0 && display.textContent.length !== 0) {
                 arrayOperator.push(operator.textContent);
                 // arrayOperator.join('');
-                display.textContent = '/ ';
+                operatorDisplay = '/ ';
+                display.textContent = operatorDisplay;
                 console.log(arrayOperator);
             }
         });
@@ -172,23 +162,35 @@ function equalsClick() {
             display.textContent = answer;
             reset = true;
             console.log(reset);
+            console.log(answer);
         } else if (arrayOperator !== false && arrayOperator.includes('-')) {
             let answer = subtraction(x, y);   
             display.textContent = answer;
             reset = true;
             console.log(reset);
+            console.log(answer);
         } else if (arrayOperator !== false && arrayOperator.includes('*')) {
             let answer = multiplication(x, y);   
             display.textContent = answer;
             reset = true;
             console.log(reset);
+            console.log(answer);
         } else if (arrayOperator !== false && arrayOperator.includes('/')) {
             let answer = division(x, y);   
             display.textContent = answer;
             reset = true;
             console.log(reset);
+            console.log(answer);
         }
-    
+    });
+}
+
+// clearButton will assign 0 to display .textContent
+// clearButton will assign empty to arrayOperator arrayX arrayY, operatorDisplay
+function clearButton(clearBtn) {
+    clearBtn.addEventListener('click', () => {
+        reset = true;
+        resetDisplay();
     });
 }
 
@@ -197,16 +199,39 @@ function resetDisplay() {
     if (reset === true) {
         display.textContent = '';
         arrayX = [];
-        x = 0;
+        x = '';
         arrayOperator = [];
+        operatorDisplay = '';
         arrayY = [];
-        y = 0;
+        y = '';
         reset = false;
     }
 }
 
-        // let answer = addition(x, y);   
-        // display.textContent = answer;
+// negPosClick should:
+// if no arrayOperator, and if x, and if x is a positive integer, x will equal negative x
+// if no arrayOperator, and if x, and if x is a negative integer, x will equal positive x
+// if no arrayOperator, and if no x, push - to arrayX
+
+// if arrayOperator, and if y, and if y is a positive integer, y will equal negative y
+// if arrayOperator, and if y, and if y is a negative integer, y will equal positive y
+// if arrayOperator, and if no y, push - to arrayY
+function negPosClick() {
+    negPos.addEventListener('click', () => {
+        if (typeof x === 'number' && typeof y !== 'number') {
+            x = x - (x * 2);
+            display.textContent = x;
+            console.log(x + 'x is posneg');
+        } else if (typeof x === 'number' && typeof y === 'number') {
+            y = y - (y * 2);
+            display.textContent = operatorDisplay + y;
+            console.log(y + 'y is posneg');
+        }
+    });
+}
+
+// x = x - (x * 2);
+// y = y - (y * 2);
 
 numberClick(num1);
 numberClick(num2);
@@ -226,9 +251,10 @@ subtractClick(subtract);
 multiplyClick(multiply);
 divideClick(divide);
 equalsClick(equals);
+negPosClick(negPos);
 
 
 // PROBLEMS TO SOLVE
-//  - equals posNeg subsequent_operators pemdas ??
+//  - equals negPos subsequent_operators pemdas ??
 //    - eval ?
 // how to use values x from arrayX, y from arrayY, op from arrayOperator on equals click ??
