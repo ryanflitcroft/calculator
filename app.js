@@ -1,17 +1,4 @@
-// HTML SETUP
-// Build a calculator that will +-*/ 2 numbers
-// Create an input for 2 numbers and an input which submits those 2 numbers for calculation, for each math operator.
-
-// import functions and grab DOM elements
-import { addition } from './math-utils.js';
-import { subtraction } from './math-utils.js';
-import { division } from './math-utils.js';
-import { multiplication } from './math-utils.js';
-
-// + DOM ELEMENTS
-//  - each button number-key .0-9
-//  - each button operator-key +-*/= cl +/-
-//  - span display-box
+import { addition, subtraction, multiplication, division } from './math-utils.js';
 
 const num1 = document.getElementById('one');
 const num2 = document.getElementById('two');
@@ -33,14 +20,6 @@ const negPos = document.getElementById('neg-pos');
 const clear = document.getElementById('clear');
 const display = document.getElementById('display');
 
-// console.log(num1, num2, num3, num4, num5, num6, num7, num8, num9, num0, decimal, add, subtract, multiply, divide, equals, negPos, clear, display); 
-
-// + eventListener click for number-key variables
-//  - num click will display key value in display-span textContent
-//  - additional num clicks will concat values
-
-
-
 let arrayX = [];
 let arrayY = []; 
 let arrayOperator = [];
@@ -49,152 +28,91 @@ let x;
 let y;
 let reset;
 
-// numberClick will display .textContent to max 17 numbers
-// numberClick and no arrayOperator will push click value to arrayX and assign number value to variable x
-// numberClick and  arrayOperator will push click value to arrayY and assign number value to variable x
-function numberClick(btn) {
-    btn.addEventListener('click', () => {
+
+function numberClick(number) {
+    number.addEventListener('click', () => {
         resetDisplay();
-        if (display.textContent.length < 17 && arrayOperator.length === 0) {
-            arrayX.push(+btn.textContent);
-            x = +arrayX.join('');
-            display.textContent += btn.textContent;
-            console.log(arrayX);
-            console.log(x);
-            
-        } else if (display.textContent.length < 17 && arrayOperator.length !== 0) {
-            arrayY.push(+btn.textContent);
-            y = +arrayY.join('');
-            display.textContent += btn.textContent;
-            console.log(arrayY);
-            console.log(y);
+        if (display.textContent.length < 17) {
+            if (arrayOperator.length === 0) {
+                arrayX.push(number.textContent);
+                x = +arrayX.join('');
+            } else if (arrayOperator.length > 0) {
+                arrayY.push(number.textContent);
+                y = +arrayY.join('');
+            }
         }
+        display.textContent += number.textContent;
     });
 }
 
-// decimalClick will display.textContent if decimal is not already present
-// if decimalClick and no operatorArray, decimal push to arrayX
-// if decimalClick and operatorArray, decimal push to arrayY
 function decimalClick(decimalBtn) {
     decimalBtn.addEventListener('click', () => {
         resetDisplay();
-        if (display.textContent.includes(decimalBtn.textContent) === false && arrayOperator.length === 0) {
-            arrayX.push(decimalBtn.textContent);
-            display.textContent += '.';
-
-        } else if (display.textContent.includes(decimalBtn.textContent) === false && arrayOperator.length !== 0) {
-            arrayY.push(decimalBtn.textContent);
+        if (display.textContent.includes('.') === false) {
+            if (arrayOperator.length === 0) {
+                arrayX.push('.');
+            } else if (arrayOperator.length > 0) {
+                arrayY.push('.');
+            }
             display.textContent += '.';
         }
     });
 }
 
-// if operator is add and if no arrayOperator and display textContent is greater than initial, + pushed to arrayOperator and opAdd assigned to +
-// display textContent changed to +
-function addClick(operator) {
-    if (operator === add) {
-        operator.addEventListener('click', () => {
+function negPosClick() {
+    negPos.addEventListener('click', () => {
+        if (typeof x === 'number') {
+            if (typeof y !== 'number' && arrayOperator.length === 0) {
+                x = x - (x * 2);
+                display.textContent = x;
+            } else if (typeof y === 'number' && reset !== true) {
+                y = y - (y * 2);
+                display.textContent = operatorDisplay + y;
+            }
+        }
+    });
+}
 
-            if (arrayOperator.length === 0 && display.textContent.length !== 0) {
-                arrayOperator.push(operator.textContent);
+function operatorClick(operator) {
+    operator.addEventListener('click', () => {
+        if (arrayOperator.length === 0 && display.textContent.length > 0) {
+            arrayOperator.push(operator.textContent);
+            if (operator === add) {
                 operatorDisplay = '+ ';
-                display.textContent = operatorDisplay;
-                console.log(arrayOperator);
-            } 
-        });
-    } 
-}
-
-// if operator is subtract and if no arrayOperator and display textContent is greater than initial, - pushed to arrayOperator and opSub assigned to -
-// display textContent changed to -
-function subtractClick(operator) {
-    if (operator === subtract) {
-        operator.addEventListener('click', () => {
-
-            if (arrayOperator.length === 0 && display.textContent.length !== 0) {
-                arrayOperator.push(operator.textContent);
+            } else if (operator === subtract) {
                 operatorDisplay = '- ';
-                display.textContent = operatorDisplay;
-                console.log(arrayOperator);
-            }
-        });
-    }
-}
-
-// if operator is multiply and if no arrayOperator and display textContent is greater than initial, * pushed to arrayOperator and opMult assigned to *
-// display textContent changed to *
-function multiplyClick(operator) {
-    if (operator === multiply) {
-        operator.addEventListener('click', () => {
-
-            if (arrayOperator.length === 0 && display.textContent.length !== 0) {
-                arrayOperator.push(operator.textContent);
+            } else if (operator === multiply) {
                 operatorDisplay = '* ';
-                display.textContent = operatorDisplay;
-                console.log(arrayOperator);
-            }
-        });
-    }
-}
-
-// if operator is divide and if no arrayOperator and display textContent is greater than initial, / pushed to arrayOperator and opDiv assigned to /
-// display textContent changed to /
-function divideClick(operator) {
-    if (operator === divide) {
-        operator.addEventListener('click', () => {
-
-            if (arrayOperator.length === 0 && display.textContent.length !== 0) {
-                arrayOperator.push(operator.textContent);
-                // arrayOperator.join('');
+            } else if (operator === divide) {
                 operatorDisplay = '/ ';
-                display.textContent = operatorDisplay;
-                console.log(arrayOperator);
             }
-        });
-    }
+            display.textContent = operatorDisplay;
+        } else if (operator === clear) {
+            reset = true;
+            resetDisplay();
+        }
+    });
 }
 
 function equalsClick() {
-    // how to use values x from arrayX, y from arrayY, op from arrayOperator on equals click ??
     equals.addEventListener('click', () => {
-        if (arrayOperator !== false && arrayOperator.includes('+')) {
-            let answer = addition(x, y);   
+        if (arrayOperator !== false) { 
+            let answer;
+            if (arrayOperator.includes('+')) {
+                answer = addition(x, y);   
+            } else if (arrayOperator.includes('-')) {
+                answer = subtraction(x, y);   
+            } else if (arrayOperator.includes('*')) {
+                answer = multiplication(x, y);   
+            } else if (arrayOperator.includes('/')) {
+                answer = division(x, y);   
+            }
             display.textContent = answer;
             reset = true;
-            console.log(reset);
-            console.log(answer);
-        } else if (arrayOperator !== false && arrayOperator.includes('-')) {
-            let answer = subtraction(x, y);   
-            display.textContent = answer;
-            reset = true;
-            console.log(reset);
-            console.log(answer);
-        } else if (arrayOperator !== false && arrayOperator.includes('*')) {
-            let answer = multiplication(x, y);   
-            display.textContent = answer;
-            reset = true;
-            console.log(reset);
-            console.log(answer);
-        } else if (arrayOperator !== false && arrayOperator.includes('/')) {
-            let answer = division(x, y);   
-            display.textContent = answer;
-            reset = true;
-            console.log(reset);
-            console.log(answer);
         }
     });
 }
 
-// clearButton will assign 0 to display .textContent
-// clearButton will assign empty to arrayOperator arrayX arrayY, operatorDisplay
-function clearButton(clearBtn) {
-    clearBtn.addEventListener('click', () => {
-        reset = true;
-        resetDisplay();
-    });
-}
-
-// resetDisplay following numberClick/decimalClick if equalsClick
 function resetDisplay() {
     if (reset === true) {
         display.textContent = '';
@@ -208,31 +126,6 @@ function resetDisplay() {
     }
 }
 
-// negPosClick should:
-// if no arrayOperator, and if x, and if x is a positive integer, x will equal negative x
-// if no arrayOperator, and if x, and if x is a negative integer, x will equal positive x
-// if no arrayOperator, and if no x, push - to arrayX
-
-// if arrayOperator, and if y, and if y is a positive integer, y will equal negative y
-// if arrayOperator, and if y, and if y is a negative integer, y will equal positive y
-// if arrayOperator, and if no y, push - to arrayY
-function negPosClick() {
-    negPos.addEventListener('click', () => {
-        if (typeof x === 'number' && typeof y !== 'number') {
-            x = x - (x * 2);
-            display.textContent = x;
-            console.log(x + 'x is posneg');
-        } else if (typeof x === 'number' && typeof y === 'number') {
-            y = y - (y * 2);
-            display.textContent = operatorDisplay + y;
-            console.log(y + 'y is posneg');
-        }
-    });
-}
-
-// x = x - (x * 2);
-// y = y - (y * 2);
-
 numberClick(num1);
 numberClick(num2);
 numberClick(num3);
@@ -243,18 +136,16 @@ numberClick(num7);
 numberClick(num8);
 numberClick(num9);
 numberClick(num0);
-decimalClick(decimal);
-clearButton(clear);
 
-addClick(add);
-subtractClick(subtract);
-multiplyClick(multiply);
-divideClick(divide);
+operatorClick(add);
+operatorClick(subtract);
+operatorClick(multiply);
+operatorClick(divide);
+operatorClick(clear);
+
+decimalClick(decimal);
 equalsClick(equals);
 negPosClick(negPos);
 
-
 // PROBLEMS TO SOLVE
-//  - equals negPos subsequent_operators pemdas ??
-//    - eval ?
-// how to use values x from arrayX, y from arrayY, op from arrayOperator on equals click ??
+//  pemdas continueOperation

@@ -67,11 +67,6 @@ button {
     text-align: center;
 }
 
-#display {
-    background: mediumvioletred;
-    grid-column: span 4;
-}
-
 @keyframes bghover {
     0% { background: mediumvioletred;}
     100% { background: skyblue; }
@@ -83,6 +78,7 @@ button {
     animation-iteration-count: infinite;
     animation-direction: alternate;
     animation-timing-function: ease-in-out;
+    grid-column: span 4;
 } 
 
 .number-key:hover {
@@ -136,6 +132,7 @@ button {
     section.key-container {
         width: 283.5px;
         height: 376.5px;
+        gap: 0.5em;
     }
 }
 
@@ -143,5 +140,6 @@ button {
     section.key-container {
         width: 255px;
         height: 339px;
+        gap: 0.5em;
     }
 }

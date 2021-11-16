@@ -1,16 +1,71 @@
-## Making a plan
+# Calculator App
 
-(bolded steps are mandatory, unbolded are for more advanced projects)
+// import functions and grab DOM elements
 
-1) **Make a drawing of your app. Simple "wireframes"**
-2) **Once you have a drawing, name the HTML elements you'll need to realize your vision**
-3) **For each HTML element ask: Why do I need this?**
-4) Ask which of out HTML elements are hard coded, and which are dynamically generated?
-5) **Once we know _why_ we need each element, think about how to implement the "Why" as a "How"**
-6) Is there some state we need to initialize?
-7) **Find all the 'events' (user clicks, form submit, on load etc) in your app. Ask one by one, "What happens when" for each of these events. Does any state change?**
-8) **Think about how to validate each of your steps**
-9) Ask: should any of this work be abstracted into functions? (i.e., is the work complicated? can it be resused?)
-10) Consider your data model. What objects will you be using? What are the key/value pairs? What arrays do you need? What needs to live in local storage?
-11) **Consider what features _depend_ on what other features. Use this dependency logic to figure out what order to complete tasks.**
+// + DOM ELEMENTS
+//  each button number-key .0-9
+//  each button operator-key +-*/= cl +/-
+//  span display-box
 
+## numberClick();
+// numberClick should:
+//  call function resetDisplay (if reset === true)
+//  if display textContent is less than 17:
+//   if no arrayOperator:
+//    push number textContent to arrayX, assign variable x equal to value
+//   else if arrayOperator:
+//    push number textContent to arrayY, assign variable y equal to value
+//   display textContent plus equals number textContent
+
+## decimalClick();
+// decimalClick should:
+//  call function resetDisplay (if reset === true)
+//  if display textContent doesn't include '.':
+//  if no arrayOperator
+//   push to arrayX '.'
+//  else if arrayOperator:
+//   push to arrayY '.'
+//  display textContent plus equals '.'
+
+## negPosClick();
+// negPosClick should:
+//  if x:
+//   if no y, and no arrayOperator:
+//    x is equal to a negative value of x
+//    display textContent is equal to x
+//   if y, and no reset:
+//    y is equal to a negative value of y
+//    display textContent is equal to operatorDisplay + y
+
+## operatorClick();
+// operatorClick should:
+//  if no arrayOperator and if display textContent length is greater than 0:
+//   push operator textContent to arrayOperator
+//   if add, operatorDisplay is equal to +
+//   if subtract, operatorDisplay is equal to -
+//   if multiply, operatorDisplay is equal to *
+//   if add, operatorDisplay is equal to /
+//   display textContent is equal to operatorDisplay
+//  else if operatorClick clear:
+//   reset is equal to true;
+//   call function resetDisplay
+
+## equalsClick();
+// equalsClick should:
+//  if no arrayOperator:
+//   if arrayOperator includes +
+//    answer is equal to call function addition
+//   if arrayOperator includes -
+//    answer is equal to call function subtraction
+//   if arrayOperator includes *
+//    answer is equal to call function multiplication
+//   if arrayOperator includes /
+//    answer is equal to call function division
+//   display textContent is equal to answer
+
+## resetDisplay
+// resetDisplay should:
+//  if reset === true:
+//   clear all-
+//    -display textContent, arrayX, x, arrayOperator, arrayY, y
+//   variable reset is equal to false;
